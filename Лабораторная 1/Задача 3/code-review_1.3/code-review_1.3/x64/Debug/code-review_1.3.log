@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\tujgi\source\repos\code-review_1.3\code-review_1.3\Source.cpp(28,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  code-review_1.3.cpp
+  Создание кода...
+  code-review_1.3.vcxproj -> C:\Users\tujgi\source\repos\code-review_1.3\x64\Debug\code-review_1.3.exe
