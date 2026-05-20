@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}">Группа</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 th:text="${title}">Группа</h1>
+
+<form th:action="@{|/faculties/${group.facultyId}/groups/save|}"
+    th:object="${group}" method="post">
+
+  <input type="hidden" th:field="*{id}"/>
+  <input type="hidden" th:field="*{facultyId}"/>
+
+  <div>
+    <label>Название группы:</label>
+    <input type="text" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}"
+        th:errors="*{name}"></span>
+  </div>
+
+  <div>
+    <label>Форма обучения:</label>
+    <select th:field="*{educationForm}">
+      <option value="">выберите</option>
+      <option th:each="form : ${educationForms}"
+          th:value="${form}"
+          th:text="${form.title}">
+      </option>
+    </select>
+    <span th:if="${#fields.hasErrors('educationForm')}"
+        th:errors="*{educationForm}"></span>
+  </div>
+
+  <fieldset>
+    <legend>ФИО тьютора (необязательно)</legend>
+    <div>
+      <label>Фамилия:</label>
+      <input type="text" th:field="*{tutorLastName}"/>
+    </div>
+    <div>
+      <label>Имя:</label>
+      <input type="text" th:field="*{tutorFirstName}"/>
+    </div>
+    <div>
+      <label>Отчество:</label>
+      <input type="text" th:field="*{tutorMiddleName}"/>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>ФИО старосты (необязательно)</legend>
+    <div>
+      <label>Фамилия:</label>
+      <input type="text" th:field="*{headmanLastName}"/>
+    </div>
+    <div>
+      <label>Имя:</label>
+      <input type="text" th:field="*{headmanFirstName}"/>
+    </div>
+    <div>
+      <label>Отчество:</label>
+      <input type="text" th:field="*{headmanMiddleName}"/>
+    </div>
+  </fieldset>
+
+  <div>
+    <button type="submit">Сохранить</button>
+    <a th:href="@{|/faculties/${group.facultyId}/groups|}">Отмена</a>
+  </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Группа</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Информация о группе</h1>
+
+<p><strong>ID:</strong> <span th:text="${group.id}">1</span></p>
+<p><strong>Факультет:</strong> <span th:text="${group.facultyName}">Факультет</span></p>
+<p><strong>Название группы:</strong> <span th:text="${group.name}">Группа</span></p>
+<p><strong>Форма обучения:</strong> <span th:text="${group.educationForm.title}">Очная</span></p>
+
+<p>
+  <strong>Тьютор:</strong>
+  <span th:text="${group.tutorLastName}">Фамилия</span>
+  <span th:text="${group.tutorFirstName}">Имя</span>
+  <span th:text="${group.tutorMiddleName}">Отчество</span>
+</p>
+
+<p>
+  <strong>Староста:</strong>
+  <span th:text="${group.headmanLastName}">Фамилия</span>
+  <span th:text="${group.headmanFirstName}">Имя</span>
+  <span th:text="${group.headmanMiddleName}">Отчество</span>
+</p>
+
+<p><strong>Количество студентов:</strong> <span th:text="${group.studentCount}">0</span></p>
+
+<div>
+  <a th:href="@{|/faculties/${group.facultyId}/groups|}">Назад к группам</a> |
+  <a th:href="@{|/faculties/${group.facultyId}/groups/${group.id}/students|}">Список студентов</a> |
+  <a th:href="@{|/faculties/${group.facultyId}/groups/${group.id}/edit|}">Изменить</a>
+</div>
+</body>
+</html>

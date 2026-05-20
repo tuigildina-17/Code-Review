@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Группы факультета</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Группы факультета: <span th:text="${faculty.name}">Факультет</span></h1>
+
+<div>
+  <a th:href="@{/faculties}">← Назад к факультетам</a> |
+  <a th:href="@{|/faculties/${faculty.id}/groups/new|}">+ Добавить группу</a>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Название</th>
+    <th>Форма обучения</th>
+    <th>ФИО тьютора</th>
+    <th>ФИО старосты</th>
+    <th>Студентов</th>
+    <th>Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="group : ${groups}">
+    <td th:text="${group.id}">1</td>
+    <td th:text="${group.name}">Группа</td>
+    <td th:text="${group.educationForm.title}">Очная</td>
+    <td>
+      <span th:text="${group.tutorLastName}">Фамилия</span>
+      <span th:text="${group.tutorFirstName}">Имя</span>
+      <span th:text="${group.tutorMiddleName}">Отчество</span>
+    </td>
+    <td>
+      <span th:text="${group.headmanLastName}">Фамилия</span>
+      <span th:text="${group.headmanFirstName}">Имя</span>
+      <span th:text="${group.headmanMiddleName}">Отчество</span>
+    </td>
+    <td th:text="${group.studentCount}">0</td>
+    <td>
+      <a th:href="@{|/faculties/${faculty.id}/groups/${group.id}|}">Просмотр</a> |
+      <a th:href="@{|/faculties/${faculty.id}/groups/${group.id}/edit|}">Изменить</a> |
+      <form th:action="@{|/faculties/${faculty.id}/groups/${group.id}/delete|}"
+          method="post" style="display:inline;">
+        <button type="submit">Удалить</button>
+      </form> |
+      <a th:href="@{|/faculties/${faculty.id}/groups/${group.id}/students|}">Студенты</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

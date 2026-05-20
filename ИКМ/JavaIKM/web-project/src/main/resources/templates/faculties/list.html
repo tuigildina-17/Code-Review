@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Факультеты</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Факультеты</h1>
+
+<a th:href="@{/faculties/new}">+ Добавить факультет</a>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Название</th>
+    <th>ФИО декана</th>
+    <th>Групп</th>
+    <th>Студентов</th>
+    <th>Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="faculty : ${faculties}">
+    <td th:text="${faculty.id}">1</td>
+    <td th:text="${faculty.name}">Название</td>
+    <td>
+      <span th:text="${faculty.deanLastName}">Фамилия</span>
+      <span th:text="${faculty.deanFirstName}">Имя</span>
+      <span th:text="${faculty.deanMiddleName}">Отчество</span>
+    </td>
+    <td th:text="${faculty.groupCount}">0</td>
+    <td th:text="${faculty.studentCount}">0</td>
+    <td>
+      <a th:href="@{|/faculties/${faculty.id}|}">Просмотр</a> |
+      <a th:href="@{|/faculties/${faculty.id}/edit|}">Изменить</a> |
+      <form th:action="@{|/faculties/${faculty.id}/delete|}" method="post" style="display:inline;">
+        <button type="submit">Удалить</button>
+      </form> |
+      <a th:href="@{|/faculties/${faculty.id}/groups|}">Группы</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

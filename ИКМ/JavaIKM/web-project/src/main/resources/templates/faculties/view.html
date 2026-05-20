@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Факультет</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Информация о факультете</h1>
+
+<p><strong>ID:</strong> <span th:text="${faculty.id}">1</span></p>
+<p><strong>Название:</strong> <span th:text="${faculty.name}">Название</span></p>
+<p>
+  <strong>Декан:</strong>
+  <span th:text="${faculty.deanLastName}">Фамилия</span>
+  <span th:text="${faculty.deanFirstName}">Имя</span>
+  <span th:text="${faculty.deanMiddleName}">Отчество</span>
+</p>
+<p><strong>Количество групп:</strong> <span th:text="${faculty.groupCount}">0</span></p>
+<p><strong>Количество студентов:</strong> <span th:text="${faculty.studentCount}">0</span></p>
+
+<div>
+  <a th:href="@{/faculties}">Назад к факультетам</a> |
+  <a th:href="@{|/faculties/${faculty.id}/groups|}">Список групп</a> |
+  <a th:href="@{|/faculties/${faculty.id}/edit|}">Изменить</a>
+</div>
+</body>
+</html>

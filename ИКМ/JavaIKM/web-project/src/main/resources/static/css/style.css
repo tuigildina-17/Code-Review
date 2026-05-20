@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+table, th, td {
+  border: 1px solid #999;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: #0056b3;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+form div, fieldset {
+  margin-bottom: 10px;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+span[th\\:errors] {
+  color: red;
+}

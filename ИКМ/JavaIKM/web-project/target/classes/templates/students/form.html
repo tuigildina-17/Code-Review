@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}">Студент</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 th:text="${title}">Студент</h1>
+
+<form th:action="@{|/faculties/${facultyId}/groups/${group.id}/students/save|}"
+    th:object="${student}" method="post">
+
+  <input type="hidden" th:field="*{id}"/>
+  <input type="hidden" th:field="*{groupId}"/>
+
+  <fieldset>
+    <legend>ФИО студента</legend>
+    <div>
+      <label>Фамилия:</label>
+      <input type="text" th:field="*{lastName}"/>
+      <span th:if="${#fields.hasErrors('lastName')}"
+          th:errors="*{lastName}"></span>
+    </div>
+    <div>
+      <label>Имя:</label>
+      <input type="text" th:field="*{firstName}"/>
+      <span th:if="${#fields.hasErrors('firstName')}"
+          th:errors="*{firstName}"></span>
+    </div>
+    <div>
+      <label>Отчество (необязательно):</label>
+      <input type="text" th:field="*{middleName}"/>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Дата рождения</legend>
+    <div>
+      <label>День (2 цифры):</label>
+      <input type="text" th:field="*{birthDay}" size="2" maxlength="2"/>
+      <span th:if="${#fields.hasErrors('birthDay')}"
+          th:errors="*{birthDay}"></span>
+    </div>
+    <div>
+      <label>Месяц (2 цифры):</label>
+      <input type="text" th:field="*{birthMonth}" size="2" maxlength="2"/>
+      <span th:if="${#fields.hasErrors('birthMonth')}"
+          th:errors="*{birthMonth}"></span>
+    </div>
+    <div>
+      <label>Год (4 цифры):</label>
+      <input type="text" th:field="*{birthYear}" size="4" maxlength="4"/>
+      <span th:if="${#fields.hasErrors('birthYear')}"
+          th:errors="*{birthYear}"></span>
+    </div>
+  </fieldset>
+
+  <div>
+    <button type="submit">Сохранить</button>
+    <a th:href="@{|/faculties/${facultyId}/groups/${group.id}/students|}">Отмена</a>
+  </div>
+</form>
+</body>
+</html>

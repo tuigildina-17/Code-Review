@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}">Факультет</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 th:text="${title}">Факультет</h1>
+
+<form th:action="@{/faculties/save}" th:object="${faculty}" method="post">
+  <input type="hidden" th:field="*{id}"/>
+
+  <div>
+    <label>Название факультета:</label>
+    <input type="text" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}"
+        th:errors="*{name}"></span>
+  </div>
+
+  <div>
+    <label>Фамилия декана:</label>
+    <input type="text" th:field="*{deanLastName}"/>
+  </div>
+  <div>
+    <label>Имя декана:</label>
+    <input type="text" th:field="*{deanFirstName}"/>
+  </div>
+  <div>
+    <label>Отчество декана:</label>
+    <input type="text" th:field="*{deanMiddleName}"/>
+  </div>
+
+  <div>
+    <button type="submit">Сохранить</button>
+    <a th:href="@{/faculties}">Отмена</a>
+  </div>
+</form>
+</body>
+</html>
